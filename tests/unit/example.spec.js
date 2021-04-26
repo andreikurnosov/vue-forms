@@ -6,13 +6,13 @@ import {
 } from '../../src/validations.js'
 
 describe('validateMeasurement', () => {
-  it.only('return valid is true', () => {
+  it('return valid is true', () => {
     const actual = validateMeasurement(100, constraints.kg)
 
     expect(actual).toEqual({ valid: true })
   })
 
-  it.only('return valid is true', () => {
+  it('return valid is true', () => {
     const actual = validateMeasurement(500, constraints.kg)
 
     expect(actual).toEqual({

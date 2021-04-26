@@ -9,6 +9,17 @@ export const constraints = {
   }
 }
 
+export function validatePatient(patient) {
+  return {
+    name: required(patient.name),
+    weight: validateMeasurement(patient.weight, constraints)
+  }
+}
+
+export function patientForm(patient) {
+  return validatePatient(patient)
+}
+
 export function validateMeasurement(value, { min, max }) {
   const isNotNull = required(value)
 
@@ -25,7 +36,6 @@ export function validateMeasurement(value, { min, max }) {
   return {
     valid: true
   }
-
 }
 
 export function isBetween(value, { min, max }) {
