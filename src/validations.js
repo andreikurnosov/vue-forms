@@ -12,7 +12,7 @@ export const constraints = {
 export function validatePatient(patient) {
   return {
     name: required(patient.name),
-    weight: validateMeasurement(patient.weight, constraints)
+    weight: validateMeasurement(patient.weight.value, constraints)
   }
 }
 
