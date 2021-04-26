@@ -9,6 +9,10 @@ export const constraints = {
   }
 }
 
+export function isFormValid(form) {
+  return form.name.valid && form.weight.valid
+}
+
 export function validatePatient(patient) {
   return {
     name: required(patient.name),

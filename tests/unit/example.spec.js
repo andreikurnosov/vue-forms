@@ -2,7 +2,8 @@ import {
   required,
   isBetween,
   validateMeasurement,
-  constraints
+  constraints,
+  isFormValid
 } from '../../src/validations.js'
 
 describe('validateMeasurement', () => {
@@ -74,5 +75,27 @@ describe('isBetween', () => {
   it('is not valid number', () => {
     const actual = isBetween('asdfasdf', { min: 1, max: 10 })
     expect(actual).toEqual({ valid: false, message: `Must be a number` })
+  })
+})
+
+describe('isFormValid', () => {
+  it('is valid', () => {
+    const validatedForm = {
+      name: { valid: true },
+      weight: { valid: true }
+    }
+    const actual = isFormValid(validatedForm)
+
+    expect(actual).toBe(true)
+  })
+
+  it('is not valid', () => {
+    const validatedForm = {
+      name: { valid: true },
+      weight: { valid: false }
+    }
+    const actual = isFormValid(validatedForm)
+
+    expect(actual).toBe(false)
   })
 })
