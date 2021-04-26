@@ -16,7 +16,7 @@
       <label for="weight">Weight</label>
       <input type="text" id="weight" v-model.number="patient.weight.value" />
 
-      <select name="" id="">
+      <select v-model="patient.weight.units">
         <option value="kg">kg</option>
         <option value="lb">lb</option>
       </select>
