@@ -1,4 +1,26 @@
-import { required, isBetween } from '../../src/validations.js'
+import {
+  required,
+  isBetween,
+  validateMeasurement,
+  constraints
+} from '../../src/validations.js'
+
+describe('validateMeasurement', () => {
+  it.only('return valid is true', () => {
+    const actual = validateMeasurement(100, constraints.kg)
+
+    expect(actual).toEqual({ valid: true })
+  })
+
+  it.only('return valid is true', () => {
+    const actual = validateMeasurement(500, constraints.kg)
+
+    expect(actual).toEqual({
+      valid: false,
+      message: `Must be between 30 and 200`
+    })
+  })
+})
 
 describe('required', () => {
   it('is valid', () => {
