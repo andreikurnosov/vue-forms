@@ -1,12 +1,24 @@
 <template>
+  <form>
+    <div class="field">
+      <label for="name">Name</label>
+      <input type="text" id="name" v-model="patient.name" />
+    </div>
+
+    <div class="field">
+      <label for="weight">Weight</label>
+      <input type="text" id="weight" v-model.number="patient.weight.value" />
+    </div>
+  </form>
+
   <pre>
   {{ patient }}
 </pre
   >
+
   <pre>
-  {{ validationStatus }}
-</pre
-  >
+    {{ validationStatus }}
+  </pre>
 </template>
 
 <script>
