@@ -1,3 +1,6 @@
+import { mount } from '@vue/test-utils'
+import App from '../../src/App.vue'
+
 import {
   required,
   isBetween,
@@ -98,4 +101,18 @@ describe('isFormValid', () => {
 
     expect(actual).toBe(false)
   })
+})
+
+test('follows the entire user story', async () => {
+  const wrapper = mount(App)
+
+  await wrapper.find('#name').setValue('')
+  await wrapper.find('#weight').setValue('')
+  expect(wrapper.findAll('.error').length).toBe(2)
+
+  await wrapper.find('#name').setValue('Andrei')
+  await wrapper.find('#weight').setValue('100')
+  expect(wrapper.findAll('.error').length).toBe(0)
+
+  expect(wrapper.find('button').element.disabled).toBe(false)
 })
