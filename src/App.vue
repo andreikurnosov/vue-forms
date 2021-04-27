@@ -21,6 +21,8 @@
         <option value="lb">lb</option>
       </select>
     </div>
+
+    <button type="submit" :disabled="!formValid">Submit</button>
   </form>
 
   <pre>
@@ -30,11 +32,12 @@
 
   <pre>
     {{ validationStatus }}
+    {{ formValid }}
   </pre>
 </template>
 
 <script>
-import { patientForm, validatePatient } from './validations.js'
+import { patientForm, validatePatient, isFormValid } from './validations.js'
 import { reactive, computed } from 'vue'
 
 export default {
@@ -53,7 +56,11 @@ export default {
       return validatePatient(patient)
     })
 
-    return { patient, validationStatus }
+    const formValid = computed(() => {
+      return isFormValid(validationStatus.value)
+    })
+
+    return { patient, validationStatus, formValid }
   }
 }
 </script>
